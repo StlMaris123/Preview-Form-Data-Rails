@@ -15,32 +15,26 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, id: 'name'  %>
   </div>
 
   <div class="field">
     <%= form.label :admission_number %>
-    <%= form.text_field :admission_number %>
+    <%= form.text_field :admission_number, id: 'number'%>
   </div>
 
   <div class="field">
     <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age, id: 'age' %>
   </div>
 
   <div class="field">
     <%= form.label :admission_date %>
     <%= form.date_select :admission_date %>
   </div>
-  <% if params[:preview_button] %>
-    <h5>Are these the attributes  you want to save?</h5>
-    <p>Name: <%= student.name%> </p>
-    <p>Admission Number: <%= student.admission_number%> </p>
-    <p>Age: <%= student.age%> </p>
-    <p>Date: <%= student.admission_date%> </p>
- <% end %>
+  
   <div class="actions">
-    <%= form.submit %>
-    <%= submit_tag 'Preview', :name => 'preview_button' %>
+    <%= form.submit 'Save', class: 'btn btn-primary', :onclick => "return confirm('Please confirm:- '
+    + 'Name: ' + document.getElementById('name').value + ', Admission Number: ' + document.getElementById('number').value + ', Age' + document.getElementById('age').value + '?')" %>
   </div>
 <% end %>
