@@ -1,0 +1,46 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admission_number %>
+    <%= form.text_field :admission_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admission_date %>
+    <%= form.date_select :admission_date %>
+  </div>
+  <% if params[:preview_button] %>
+    <h5>Are these the attributes  you want to save?</h5>
+    <p>Name: <%= student.name%> </p>
+    <p>Admission Number: <%= student.admission_number%> </p>
+    <p>Age: <%= student.age%> </p>
+    <p>Date: <%= student.admission_date%> </p>
+ <% end %>
+  <div class="actions">
+    <%= form.submit %>
+    <%= submit_tag 'Preview', :name => 'preview_button' %>
+  </div>
+<% end %>
